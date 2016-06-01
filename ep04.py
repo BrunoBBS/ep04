@@ -37,9 +37,11 @@ def simulaQuad(n,m,lista,t):
     print(numpy.matrix(tab2))
         
 def main():
-    m = int(input('colunas'))
-    n = int(input('linhas'))
-    t = int(input('vezes'))
+    m = int(input('colunas: '))
+    n = int(input('linhas: '))
+    t = int(input('vezes: '))
     modo, listaVivos = leEntrada('teste.txt')
     if modo == 'Q':
         simulaQuad(n,m,listaVivos,t)
+
+main()
