@@ -1,3 +1,5 @@
+import numpy
+
 def leEntrada(nome):
     listaVivos = []
     modo = 0
@@ -32,10 +34,6 @@ def simulaQuad(n,m,lista,t):
                 elif tab[i][j] == 1 and somViz == 2 :
 
                     tab2[i][j] = 1
-
-    for row in tab2:
-    for val in row:
-        print '{:4}'.format(val),
-    print
+    print(numpy.matrix(tab2))
         
 
