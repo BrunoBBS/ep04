@@ -72,7 +72,40 @@ def desenhaQuad(n,m,lista,figura):
             cor = '#ffffff'
             if (i,j) in lista:
                 cor = '#6600cc'
+            #calcula a coordenada dos vertices considerando um quadrado de 1x1
             verts = [(i,j),(i+1,j),(i+1,j+1),(i,j+1),(i,j)]
+            path = Path(verts,codes)
+            patch = patches.PathPatch(path, facecolor = cor, lw=1)
+            imagem.add_patch(patch)
+
+    plt.savefig(figura)
+    imagem.set_xlim(0,m)
+    imagem.set_ylim(0,n)
+    plt.show()
+
+def desenhaHex(n,m,lista,figura):
+    codes = [Path.MOVETO,
+         Path.LINETO,
+         Path.LINETO,
+         Path.LINETO,
+         Path.LINETO,
+         Path.LINETO,
+         Path.CLOSEPOLY]
+
+    fig = plt.figure()
+    imagem = fig.add_subplot(111)
+    
+    #calcula as coordenadas dos vertices considerando o raio do circulo circunscrito no hexagono como 0.5
+    for p in range(m):
+        i = p - (p*0.25)
+        for j in range(n):
+            cor = '#ffffff'
+            if (i,j) in lista:
+                cor = '#6600cc'
+            if p%2 != 0:
+                j = j - 0.5
+             
+            verts = [(i+1,j+0.5),(i+0.75,j+1),(i+0.25,j+1),(i,j+0.5),(i+0.25,j),(i+0.75,j),(i,j)]
             path = Path(verts,codes)
             patch = patches.PathPatch(path, facecolor = cor, lw=1)
             imagem.add_patch(patch)
@@ -88,7 +121,7 @@ def main():
     t = int(input('vezes: '))
     modo,listaVivos = leEntrada('teste.txt')
     if modo == 0:
-        desenhaQuad(n,m,simulaQuad(n,m,listaVivos,t),'rola.png')
+        desenhaQuad(n,m,simulaQuad(n,m,listaVivos,t),'t.png')
 
 
 main()
