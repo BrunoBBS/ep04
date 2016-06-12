@@ -48,14 +48,13 @@ def simulaQuad(n,m,lista,t):
         tab[clinha][ccoluna] = 1
 
     for vezes in range(t):
-        desenhaQuad(n,m,geraListaVivos(tab,n,m), str(vezes) + ".png")
 
         tab2 =  [[0 for c in range(n)] for d in range(m)]
 
         for i in range(m):
 
             for j in range(n):
-                #faz a soma dos vizinhos      
+                #faz a soma dos vizinhos
                 somViz = tab[(i-1)%m][(j-1)%n] + tab[(i-1)%m][j] + tab[(i-1)%m][(j+1)%n] + tab[i][(j-1)%n] + tab[i][(j+1)%n] + tab[(i+1)%m][(j-1)%n] + tab[(i+1)%m][j] + tab[(i+1)%m][(j+1)%n]
 
                 #aplica as regras de acordo com o numero de vizinhos
